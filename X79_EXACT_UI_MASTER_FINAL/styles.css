@@ -1,0 +1,83 @@
+:root{
+  --gold:#efc760;
+  --cyan:#28d9df;
+  --bg:#020b12;
+}
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--bg);font-family:Arial,Helvetica,sans-serif}
+body{overscroll-behavior:none}
+button,input{font:inherit}
+.app{position:fixed;inset:0;max-width:100vw;max-height:100vh;overflow:hidden;background:var(--bg);display:grid;place-items:center}
+.screen{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+.stage{
+  position:relative;
+  width:min(100vw,calc(100vh * 1.5));
+  height:min(100vh,calc(100vw / 1.5));
+  aspect-ratio:3/2;
+  flex:none;
+  overflow:hidden;
+  background:#03131b;
+}
+.master{
+  position:absolute;inset:0;width:100%;height:100%;display:block;
+  object-fit:contain;object-position:center;
+  user-select:none;pointer-events:none;
+  image-rendering:auto;
+  image-rendering:-webkit-optimize-contrast;
+  backface-visibility:hidden;
+  transform:translateZ(0);
+}
+.hotspot{
+  position:absolute;z-index:5;margin:0;padding:0;border:0!important;outline:0;background:transparent!important;
+  box-shadow:none!important;border-radius:0;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:filter .2s ease,transform .2s ease;
+}
+.hotspot::before,.hotspot::after{display:none!important;content:none!important}
+.hotspot:hover{filter:brightness(1.08);transform:scale(1.01)}
+.hotspot:active{transform:scale(.985);filter:brightness(.94)}
+.hotspot:focus-visible{outline:1px solid rgba(239,199,96,.45)!important;outline-offset:-2px}
+/* Master reference = 1536 x 1024. All coordinates are percentages of that image. */
+.login{left:3.97%;top:38.77%;width:11.72%;height:4.79%}
+.register{left:17.84%;top:38.77%;width:10.81%;height:4.79%}
+.exchange{left:59.24%;top:1.37%;width:7.68%;height:4.20%}
+.mail{left:70.44%;top:.98%;width:4.00%;height:5.08%}
+.event{left:76.69%;top:.98%;width:4.17%;height:5.08%}
+.mission{left:82.62%;top:.98%;width:4.69%;height:5.08%}
+.settings{left:89.20%;top:.98%;width:3.91%;height:5.08%}
+.c-all{left:33.07%;top:11.72%;width:7.49%;height:4.00%}
+.c-hot{left:33.07%;top:16.70%;width:7.49%;height:3.70%}
+.c-card{left:33.07%;top:20.60%;width:7.49%;height:3.70%}
+.c-live{left:33.07%;top:24.45%;width:7.49%;height:3.70%}
+.c-slot{left:33.07%;top:28.32%;width:7.49%;height:3.70%}
+.c-fish{left:33.07%;top:32.13%;width:7.49%;height:3.70%}
+.c-electronic{left:33.07%;top:35.94%;width:7.49%;height:3.70%}
+.c-lottery{left:33.07%;top:39.75%;width:7.49%;height:3.70%}
+.c-mini{left:33.07%;top:43.55%;width:7.49%;height:3.70%}
+.g-xd{left:41.47%;top:11.13%;width:12.50%;height:16.80%}
+.g-xd5{left:54.75%;top:11.13%;width:13.87%;height:16.80%}
+.g-tx{left:69.47%;top:11.13%;width:13.22%;height:16.80%}
+.g-tx5{left:83.72%;top:11.13%;width:13.45%;height:16.80%}
+.g-fish{left:41.47%;top:28.91%;width:12.50%;height:15.82%}
+.g-slot{left:54.75%;top:28.91%;width:13.87%;height:15.82%}
+.g-poker{left:69.47%;top:28.91%;width:13.22%;height:15.82%}
+.g-bj{left:83.72%;top:28.91%;width:13.45%;height:15.82%}
+.t-xd{left:.20%;top:47.07%;width:24.74%;height:20.90%}
+.t-xd5{left:25.20%;top:47.07%;width:24.74%;height:20.90%}
+.t-tx{left:50.20%;top:47.07%;width:24.74%;height:20.90%}
+.t-tx5{left:75.20%;top:47.07%;width:24.60%;height:20.90%}
+.b-bac{left:.20%;top:68.26%;width:24.74%;height:21.39%}
+.b-rou{left:25.20%;top:68.26%;width:24.74%;height:21.39%}
+.b-slot{left:50.20%;top:68.26%;width:24.74%;height:21.39%}
+.b-fish{left:75.20%;top:68.26%;width:24.60%;height:21.39%}
+.toast{position:absolute;z-index:20;left:50%;bottom:4.8%;transform:translate(-50%,12px);opacity:0;pointer-events:none;padding:.72em 1.2em;border:1px solid rgba(239,199,96,.55);background:rgba(2,18,27,.94);color:#f6d779;font-weight:800;font-size:clamp(11px,1vw,16px);transition:.2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(0,8,13,.72);backdrop-filter:blur(3px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility 0s linear .22s}
+.modal.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .22s ease}
+.auth-card{position:relative;width:min(430px,90vw);padding:26px;border:1px solid rgba(239,199,96,.52);background:linear-gradient(180deg,rgba(5,46,57,.98),rgba(2,22,30,.99));box-shadow:0 24px 80px rgba(0,0,0,.62);color:#fff}
+.modal-close{position:absolute;right:8px;top:4px;border:0;background:transparent;color:#f2ce70;font-size:30px;cursor:pointer}
+.auth-logo{text-align:center;color:#f2ce70;font-size:44px;font-weight:900;margin-bottom:12px}.tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(239,199,96,.22);margin-bottom:18px}.tab{border:0;background:transparent;color:#78959f;padding:12px;font-weight:900;cursor:pointer}.tab.active{color:#f2ce70;border-bottom:2px solid #efc760}.form{display:none;gap:12px}.form.active{display:grid}.form label{display:grid;gap:5px;color:#d6e2e5;font-size:13px}.form input{width:100%;padding:12px 13px;border:1px solid rgba(239,199,96,.3);background:#061c26;color:#fff;outline:none}.form input:focus{border-color:#efc760}.primary{padding:14px;border:1px solid #ffe5a0;background:linear-gradient(#f5d577,#b67d28);color:#111820;font-weight:900;cursor:pointer}.auth-msg{min-height:18px;margin-top:8px;text-align:center;color:#f2ce70;font-size:12px}
+.connect-screen{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(1,10,15,.94);opacity:0;visibility:hidden;pointer-events:none;transition:.25s}
+.connect-screen.show{opacity:1;visibility:visible;pointer-events:auto}
+.connect-panel{width:min(620px,86vw);text-align:center;color:#fff}.connect-logo{font-size:clamp(74px,12vw,142px);line-height:.9;font-weight:950;color:#efc760}.connect-title{margin-top:24px;color:#f3d477;font-weight:900;font-size:clamp(16px,2.1vw,28px);letter-spacing:.04em}.connect-pct{margin-top:22px;color:#fff;font-size:clamp(32px,5vw,58px);font-weight:900}.connect-track{width:min(520px,78vw);height:5px;margin:14px auto;background:rgba(255,255,255,.12);overflow:hidden}.connect-track i{display:block;width:0;height:100%;background:linear-gradient(90deg,#2bd9df,#efc760);transition:width .08s linear}.connect-text{color:#bcd0d5;font-size:14px}
+@media(max-width:700px){.stage{width:min(100vw,calc(100vh * 1.5));height:min(100vh,calc(100vw / 1.5))}.hotspot:hover{transform:none}.toast{bottom:3%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
